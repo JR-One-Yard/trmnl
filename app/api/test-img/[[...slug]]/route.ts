@@ -1,6 +1,5 @@
 export const runtime = "nodejs";
-// export const revalidate = 15; // This controls the default revalidation time
-import { unstable_cacheLife as cacheLife } from "next/cache";
+export const revalidate = 60; // Cache for 60 seconds
 
 import { ImageResponse } from "next/og";
 import { createElement } from "react";
@@ -187,14 +186,8 @@ async function generateImageData(slug: string): Promise<{
 	}
 }
 
-// PRODUCTION HANDLERS - using 'use cache' from Next.js
+// PRODUCTION HANDLERS - using Next.js route-level caching
 const getCachedImageData = async (slug: string) => {
-	"use cache";
-	cacheLife({
-		stale: CACHE_STALE_TIME,
-		revalidate: CACHE_STALE_TIME,
-		expire: 86400, // 1 day
-	});
 	console.log("🔍 Production cache: Generating fresh data for:", slug);
 	const result = await generateImageData(slug);
 
