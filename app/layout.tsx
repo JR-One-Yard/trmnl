@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono as FontMono, Geist as FontSans } from "next/font/google";
+import { JetBrains_Mono as FontMono, Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Suspense } from "react";

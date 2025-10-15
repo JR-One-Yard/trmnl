@@ -3,9 +3,6 @@ const nextConfig = {
   /* config options here */
   trailingSlash: false,
   skipTrailingSlashRedirect: true,
-  experimental: {
-    useCache: true,
-  },
 };
 
 module.exports = nextConfig;
