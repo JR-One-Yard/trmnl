@@ -316,7 +316,7 @@ export async function GET(
 				? result.data.length.toString()
 				: `${800 * 480}`;
 
-			return new Response(result.data as any, {
+			return new Response(new Uint8Array(result.data), {
 				headers: {
 					"Content-Type": "image/bmp",
 					"Content-Length": contentLength,
@@ -338,7 +338,7 @@ export async function GET(
 			throw new Error("Failed to generate fallback image");
 		}
 
-		return new Response(fallback.data as any, {
+		return new Response(new Uint8Array(fallback.data), {
 			headers: {
 				"Content-Type": "image/bmp",
 				"Content-Length": fallback.data.length.toString(),
@@ -372,7 +372,7 @@ export async function GET(
 				);
 			}
 
-			return new Response(fallback.data as any, {
+			return new Response(new Uint8Array(fallback.data), {
 				headers: {
 					"Content-Type": "image/bmp",
 					"Content-Length": fallback.data.length.toString(),
