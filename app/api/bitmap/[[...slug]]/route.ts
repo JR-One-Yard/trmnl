@@ -264,7 +264,7 @@ export async function GET(
 			// Check if the item is still valid
 			if (item.expiresAt > now) {
 				logger.info(`🔵 Global cache HIT for ${cacheKey}`);
-				return new Response(item.data, {
+				return new Response(item.data as BodyInit, {
 					headers: {
 						"Content-Type": "image/bmp",
 						"Content-Length": item.data.length.toString(),
@@ -274,7 +274,7 @@ export async function GET(
 
 			logger.info(`🟡 Global cache STALE for ${cacheKey}`);
 			// Return stale data but trigger background revalidation
-			const staleResponse = new Response(item.data, {
+			const staleResponse = new Response(item.data as BodyInit, {
 				headers: {
 					"Content-Type": "image/bmp",
 					"Content-Length": item.data.length.toString(),
@@ -393,7 +393,7 @@ const generateBitmap = cache(async (bitmapPath: string, cacheKey: string) => {
 
 	logger.success(`Successfully generated bitmap for: ${bitmapPath}`);
 
-	return new Response(recipeBuffer, {
+	return new Response(recipeBuffer as BodyInit, {
 		headers: {
 			"Content-Type": "image/bmp",
 			"Content-Length": recipeBuffer.length.toString(),
