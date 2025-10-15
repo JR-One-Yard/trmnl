@@ -16,13 +16,13 @@ export async function createClient(): Promise<{
 	const cookieStore = await cookies();
 	// Step 1: Check if Supabase API environment variables are present
 	const hasSupabaseAPI =
-		process.env.NEXT_PUBLIC_SUPABASE_URL &&
-		process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+		process.env.SUPABASE_URL &&
+		process.env.SUPABASE_ANON_KEY;
 
 	if (!hasSupabaseAPI) {
 		// Supabase API variables missing: cannot perform a schema check
 		console.log(
-			"Supabase API variables (NEXT_PUBLIC_SUPABASE_URL and/or NEXT_PUBLIC_SUPABASE_ANON_KEY) are missing.",
+			"Supabase API variables (SUPABASE_URL and/or SUPABASE_ANON_KEY) are missing.",
 		);
 		console.log(
 			"Please obtain these from your Supabase dashboard and set them.",
@@ -38,8 +38,8 @@ export async function createClient(): Promise<{
 
 	// Create the Supabase client with the environment variables
 	// We've already checked they exist above, so we can safely use them
-	const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-	const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+	const supabaseUrl = process.env.SUPABASE_URL || "";
+	const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "";
 
 	const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
 		cookies: {

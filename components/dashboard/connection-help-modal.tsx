@@ -145,8 +145,8 @@ export default function ConnectionHelpModal({
 
 											<div className="mt-4 bg-gray-800 p-2 rounded-md font-mono text-xs text-gray-300">
 												<pre>
-													{`NEXT_PUBLIC_SUPABASE_ANON_KEY
-NEXT_PUBLIC_SUPABASE_URL
+													{`SUPABASE_ANON_KEY
+SUPABASE_URL
 POSTGRES_DATABASE
 POSTGRES_HOST
 POSTGRES_PASSWORD

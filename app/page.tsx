@@ -28,11 +28,11 @@ const DashboardData = async () => {
 							<p className="mb-3">
 								We&apos;re missing the{" "}
 								<span className="font-mono bg-muted px-1 rounded">
-									NEXT_PUBLIC_SUPABASE_URL
+									SUPABASE_URL
 								</span>{" "}
 								and{" "}
 								<span className="font-mono bg-muted px-1 rounded">
-									NEXT_PUBLIC_SUPABASE_ANON_KEY
+									SUPABASE_ANON_KEY
 								</span>{" "}
 								in your environment variables (/.env file).
 							</p>
