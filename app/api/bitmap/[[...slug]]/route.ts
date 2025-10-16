@@ -240,6 +240,10 @@ export async function GET(
 	{ params }: { params: Promise<{ slug?: string[] }> },
 ) {
 	try {
+		// Log the full request details for debugging
+		console.log("[BITMAP] Request URL:", req.url);
+		console.log("[BITMAP] Request method:", req.method);
+		
 		// Always await params as required by Next.js 14/15
 		const { slug = ["not-found"] } = await params;
 		const bitmapPath = Array.isArray(slug) ? slug.join("/") : slug;
