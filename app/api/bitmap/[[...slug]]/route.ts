@@ -1,5 +1,6 @@
 export const runtime = "nodejs";
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 import type { NextRequest } from "next/server";
 import { ImageResponse } from "next/og";
@@ -8,16 +9,6 @@ import { renderBmp, DitheringMethod } from "@/utils/render-bmp";
 import NotFoundScreen from "@/app/recipes/screens/not-found/not-found";
 import screens from "@/app/recipes/screens.json";
 import loadFont from "@/utils/font-loader";
-
-// Generate static params for the bitmap route
-export async function generateStaticParams() {
-	const staticParams = [
-		...Object.keys(screens).map((screen) => ({
-			slug: [`${screen}.bmp`],
-		})),
-	];
-	return staticParams;
-}
 
 // Logging utility to control log output based on environment
 const logger = {
@@ -240,9 +231,9 @@ export async function GET(
 	{ params }: { params: Promise<{ slug?: string[] }> },
 ) {
 	try {
-		// Log the full request details for debugging
-		console.log("[BITMAP] Request URL:", req.url);
-		console.log("[BITMAP] Request method:", req.method);
+		// Log the full request details for debugging (avoiding req.url to prevent dynamic behavior)
+		// console.log("[BITMAP] Request URL:", req.url);
+		// console.log("[BITMAP] Request method:", req.method);
 		
 		// Always await params as required by Next.js 14/15
 		const { slug = ["not-found"] } = await params;
@@ -272,6 +263,9 @@ export async function GET(
 					headers: {
 						"Content-Type": "image/bmp",
 						"Content-Length": item.data.length.toString(),
+						"Access-Control-Allow-Origin": "*",
+						"Access-Control-Allow-Methods": "GET",
+						"Access-Control-Allow-Headers": "Content-Type",
 					},
 				});
 			}
@@ -282,6 +276,9 @@ export async function GET(
 				headers: {
 					"Content-Type": "image/bmp",
 					"Content-Length": item.data.length.toString(),
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Methods": "GET",
+					"Access-Control-Allow-Headers": "Content-Type",
 				},
 			});
 
@@ -338,6 +335,9 @@ export async function GET(
 				headers: {
 					"Content-Type": "image/bmp",
 					"Content-Length": buffer.length.toString(),
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Methods": "GET",
+					"Access-Control-Allow-Headers": "Content-Type",
 				},
 			});
 		} catch (fallbackError) {
@@ -401,6 +401,9 @@ const generateBitmap = cache(async (bitmapPath: string, cacheKey: string) => {
 		headers: {
 			"Content-Type": "image/bmp",
 			"Content-Length": recipeBuffer.length.toString(),
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Methods": "GET",
+			"Access-Control-Allow-Headers": "Content-Type",
 		},
 	});
 });
