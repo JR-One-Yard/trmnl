@@ -6,6 +6,10 @@
       {
         "path": "/api/bitmap/wikipedia.bmp",
         "schedule": "0 0 * * *"
+      },
+      {
+        "path": "/api/bitmap/year-progress.bmp",
+        "schedule": "5 0 * * *"
       }
     ]
   }

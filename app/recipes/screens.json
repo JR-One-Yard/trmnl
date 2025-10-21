@@ -121,6 +121,51 @@
 		"version": "0.1.0",
 		"category": "display-components"
 	},
+	"cba-stock": {
+		"title": "CBA Stock Price",
+		"published": true,
+		"createdAt": "2025-10-21T00:00:00Z",
+		"updatedAt": "2025-10-21T00:00:00Z",
+		"description": "A component that displays the current Commonwealth Bank of Australia (CBA) stock price and market data from the ASX.",
+		"componentPath": "./screens/cba-stock",
+		"hasDataFetch": true,
+		"props": {
+			"price": "Loading...",
+			"change": "0.00",
+			"changePercent": "0.00"
+		},
+		"tags": ["tailwind", "stocks", "asx", "api", "live-data", "finance"],
+		"author": {
+			"name": "Assistant",
+			"github": ""
+		},
+		"renderSettings": {},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
+	"year-progress": {
+		"title": "Year Progress",
+		"published": true,
+		"createdAt": "2025-10-21T00:00:00Z",
+		"updatedAt": "2025-10-21T00:00:00Z",
+		"description": "A component that displays year progress as a grid of dots, showing how many days have passed in the current year.",
+		"componentPath": "./screens/year-progress",
+		"hasDataFetch": true,
+		"props": {
+			"dayIndex": 1,
+			"totalDays": 365,
+			"currentDate": "2025-01-01",
+			"percentage": 0.0
+		},
+		"tags": ["bitmap", "progress", "calendar", "time", "dots"],
+		"author": {
+			"name": "Assistant",
+			"github": ""
+		},
+		"renderSettings": {},
+		"version": "0.1.0",
+		"category": "display-components"
+	},
 	"not-found": {
 		"title": "Not Found Recipe",
 		"published": true,
