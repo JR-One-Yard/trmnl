@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "preinstall": "rm -f pnpm-lock.yaml",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "biome check ./app ./components ./lib ./utils ./hooks",
     "format": "biome format --write ./app ./components ./lib ./utils ./hooks",
     "verify": "tsx scripts/verify-setup.ts",
-    "release:major": "pnpm version major -m 'chore(release): %s' && git push --follow-tags",
-    "release:minor": "pnpm version minor -m 'chore(release): %s' && git push --follow-tags",
-    "release:patch": "pnpm version patch -m 'chore(release): %s' && git push --follow-tags"
+    "release:major": "npm version major -m 'chore(release): %s' && git push --follow-tags",
+    "release:minor": "npm version minor -m 'chore(release): %s' && git push --follow-tags",
+    "release:patch": "npm version patch -m 'chore(release): %s' && git push --follow-tags"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.7",
@@ -64,11 +65,5 @@
     "tsx": "^4.20.6",
     "typescript": "^5.8.3"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "@tailwindcss/oxide",
-      "unrs-resolver"
-    ]
-  }
+  "packageManager": "npm@10.0.0"
 }

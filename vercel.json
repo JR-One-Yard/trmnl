@@ -1,7 +1,8 @@
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
-    "installCommand": "npm install",
+    "installCommand": "rm -f pnpm-lock.yaml && npm ci",
     "buildCommand": "npm run build",
+    "framework": null,
     "crons": [
       {
         "path": "/api/bitmap/wikipedia.bmp",
