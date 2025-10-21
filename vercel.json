@@ -1,6 +1,6 @@
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
-    "installCommand": "rm -f pnpm-lock.yaml yarn.lock && npm install --no-package-lock",
+    "installCommand": "rm -rf pnpm-lock.yaml yarn.lock .pnpm-store node_modules/.pnpm && npm cache clean --force && npm install --force --no-fund --no-audit",
     "buildCommand": "npm run build",
     "framework": null,
     "outputDirectory": ".next",

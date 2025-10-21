@@ -2,3 +2,6 @@ pnpm-lock.yaml
 yarn.lock
 .pnpm-store
 node_modules/.pnpm
+*.tgz
+.pnpm-debug.log
+.yarn/
